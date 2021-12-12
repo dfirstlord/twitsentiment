@@ -30,7 +30,7 @@ library(caret)
 ```
 
 ## Second Step
-Read the tweet dataset from csv file and show the first 6 dataset from top of the file.
+Read the tweet dataset from csv file and show the first 6 dataset from top of the file
 ```
 data <- read.csv("gojekTweetDataset.csv")
 head(data)
@@ -46,8 +46,38 @@ data$Kelas <- as.factor(data$Kelas)
 data <- data %>%
   select(text, Kelas)
 ```
-For showing the composition between the Negative, Positive, and Neutral Tweet Class, We can use the round function with the "Kelas" coloumn.
+For showing the composition between the Negative, Positive, and Neutral Tweet Class, We can use the round function with the "Kelas" coloumn
 ```
 round(prop.table(table(data$Kelas)),2)
 ```
 ![alt text](https://github.com/dfirstlord/twitsentiment/blob/main/pict/composition.PNG)
+
+##  Fourth Step
+To clean the tweet data that has symbol, link, emoticon, number and stopword, First We can prepare the function that will be used in the tweet cleaning process. The function code for the cleaning process 
+```
+tweet.delURL = function(x) gsub("http[^[:space:]]*","",x)
+tweet.delATUser = function(x) gsub("@[a-z,A-Z]*","",x)
+tweet.delEmoji = function(x) gsub("\\p{So}|\\p{Cn}","",x, perl = TRUE)
+tweet.delSC = function(x) gsub("[^[:alnum:]///' ]","",x)
+swIndo <- read.csv("swIndo.csv",header = FALSE)
+swIndo <- as.character(swIndo$V1)
+swIndo <- c(swIndo, stopwords())
+```
+In this project, I'm using stop word in Indonesian. The list of Indonesia stop word can be accessed [here!](https://github.com/aliakbars/bilp/blob/master/stoplist)
+
+And then, We can run the following code to start the cleaning process
+```
+#Crate corpus
+corpus = VCorpus(VectorSource(data$text))
+corpus = tm_map(corpus, content_transformer(tweet.delURL))
+corpus = tm_map(corpus, content_transformer(tweet.delATUser))
+corpus = tm_map(corpus, content_transformer(tweet.delEmoji))
+corpus = tm_map(corpus, content_transformer(tweet.delSC))
+corpus = tm_map(corpus, content_transformer(tolower))
+corpus = tm_map(corpus, removeNumbers)
+corpus = tm_map(corpus, removePunctuation)
+corpus = tm_map(corpus, removeWords, c(stopwords("english"),swIndo))
+corpus = tm_map(corpus, stemDocument)
+corpus = tm_map(corpus, stripWhitespace)
+as.character(corpus2[[1]])
+```
