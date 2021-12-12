@@ -80,3 +80,4 @@ rf_pred2 = predict(rf_classifier2, newdata = test_set2[-1126])
 
 # Review model
 confusionMatrix(table(rf_pred2,test_set2$Class))
+
