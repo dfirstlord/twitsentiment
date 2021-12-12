@@ -1,2 +1,2 @@
 # twitsentiment
-Sentiment analysis based on tweets about GoFood
+Sentiment analysis based on tweets about GoFood feature in GoJek. Sentiment analysis is the process of understanding and classifying emotions (positive, negative, and neutral) contained in writing using text analysis techniques. Sentiment analysis is done by analyzing online writing to determine the emotional tone of the author. Sentiment analysis is often referred to as opinion mining. This shows that you will explore what emotions are behind every customer's words. Nowadays, customers are very happy to express their feelings through online platforms, such as social media, e-commerce, and websites. Therefore, sentiment analysis is carried out on these platforms.
