@@ -50,3 +50,4 @@ For showing the composition between the Negative, Positive, and Neutral Tweet Cl
 ```
 round(prop.table(table(data$Kelas)),2)
 ```
+![alt text](https://github.com/dfirstlord/twitsentiment/blob/main/pict/composition.PNG)
