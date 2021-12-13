@@ -131,3 +131,4 @@ To show the accuracy of the Random Forest model that have been created, Use the 
 # Review model
 confusionMatrix(table(rf_pred,test_set$Class))
 ```
+![alt text](https://github.com/dfirstlord/twitsentiment/blob/main/pict/rfResult.PNG)
