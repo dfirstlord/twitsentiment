@@ -132,3 +132,6 @@ To show the accuracy of the Random Forest model that have been created, Use the 
 confusionMatrix(table(rf_pred,test_set$Class))
 ```
 ![alt text](https://github.com/dfirstlord/twitsentiment/blob/main/pict/rfResult.PNG)
+
+# Tweet Sentiment Analysis with Naive Bayes Algorithm
+Sentiment analysis based on tweets about GoFood feature in GoJek. 
